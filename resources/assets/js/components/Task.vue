@@ -151,13 +151,14 @@
                 axios.post('/task', {
                     name: this.task.name,
                     description: this.task.description,
-                    due_date: this.task.due_date
+                    due_date: this.task.due_date,
+                    status: 0
                 })
                     .then(response => {
 
                         this.reset();
 
-                        this.tasks.push(response.data.task);
+                        this.readTasks();
 
                         $("#add_task_model").modal("hide");
 
@@ -170,6 +171,10 @@
 
                         if (error.response.data.errors.description) {
                             this.errors.push(error.response.data.errors.description[0]);
+                        }
+
+                        if (error.response.data.errors.due_date) {
+                            this.errors.push(error.response.data.errors.due_date[0]);
                         }
                     });
             },
