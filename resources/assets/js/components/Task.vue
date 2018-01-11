@@ -17,6 +17,7 @@
                                     <a role="button">
                                         {{task.name}}
                                     </a>
+                                    <span class="done-badge" v-if="task.status==1">DONE</span>
                                     <span class="right">{{task.due_date |moment("from","now")}}</span>
                                 </h4>
                             </div>
@@ -26,9 +27,9 @@
                                     <p>{{task.description}}</p>
                                     <p class="bold">Due Date :</p>
                                     <p>{{task.due_date |moment("dddd, MMMM Do YYYY")}}</p>
-                                    <button @click="initUpdate(index)" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-edit"></span> Edit</button>
+                                    <button v-if="task.status==0" @click="initUpdate(index)" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-edit"></span> Edit</button>
                                     <button @click="deleteTask(index)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete</button>
-                                    <button type="button" @click="doneTask(index)" class="btn btn-success">Done</button>
+                                    <button v-if="task.status==0" type="button" @click="doneTask(index)" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Done</button>
                                 </div>
                             </div>
                         </div>
@@ -237,8 +238,10 @@
                     status: 1
                 })
                     .then(response => {
+                        console.log("Berhasil");
+                        this.reset();
 
-                        
+                        this.tasks.push(response.data.task);
 
                     })
                     .catch(error => {

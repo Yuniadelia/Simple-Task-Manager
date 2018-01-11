@@ -33,3 +33,10 @@
 .border-darkMint {
     border: 1px solid #66beb2;
 }
+
+.done-badge {
+    margin-left: 5px;
+    padding: 2px 4px;
+    background-color: #96f4aa;
+    border-radius: 10px;
+}
