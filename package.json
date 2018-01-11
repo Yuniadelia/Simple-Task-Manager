@@ -19,6 +19,24 @@
     "vue": "^2.5.7"
   },
   "dependencies": {
+    "vue-moment": "^3.1.0",
     "vue-router": "^3.0.1"
-  }
+  },
+  "name": "project",
+  "version": "1.0.0",
+  "main": "webpack.mix.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silfiL/Simple-Task-Manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/silfiL/Simple-Task-Manager/issues"
+  },
+  "homepage": "https://github.com/silfiL/Simple-Task-Manager#readme",
+  "description": ""
 }

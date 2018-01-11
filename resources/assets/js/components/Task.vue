@@ -147,6 +147,7 @@
             },
             createTask()
             {
+                console.log(this.task);
                 axios.post('/task', {
                     name: this.task.name,
                     description: this.task.description,
