@@ -1,0 +1,35 @@
+.bold {
+    font-weight: bold;
+}
+
+.right {
+    float: right;
+}
+
+.btn {
+    padding: 4px 6px;
+    font-size: 16px;
+}
+
+.largerFont {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.mint {
+    background-color: #8ad6cc;
+    color: white;
+}
+
+.darkMint {
+    background-color: #66beb2;
+}
+
+.textWhite {
+    color: white;
+    font-weight: bold;
+}
+
+.border-darkMint {
+    border: 1px solid #66beb2;
+}
