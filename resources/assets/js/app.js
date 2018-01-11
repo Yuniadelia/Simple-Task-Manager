@@ -7,7 +7,7 @@ import router from './routes';
 
 window.Vue = Vue;
 Vue.use(VueRouter);
-Vue.use(require('vue-moment'));
+Vue.use(VueMoment);
 
 
 const app = new Vue({

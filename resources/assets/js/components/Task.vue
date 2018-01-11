@@ -155,7 +155,6 @@
                     status: 0
                 })
                     .then(response => {
-
                         this.reset();
 
                         this.readTasks();
@@ -243,10 +242,9 @@
                     status: 1
                 })
                     .then(response => {
-                        console.log("Berhasil");
                         this.reset();
 
-                        this.tasks.push(response.data.task);
+                        this.readTasks();
 
                     })
                     .catch(error => {
