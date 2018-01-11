@@ -62357,6 +62357,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -62462,7 +62463,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.put('/done/' + this.orderedTasks[index].id, {
                 status: 1
-            }).then(function (response) {}).catch(function (error) {
+            }).then(function (response) {
+                console.log("Berhasil");
+                _this5.reset();
+
+                _this5.tasks.push(response.data.task);
+            }).catch(function (error) {
                 _this5.errors = [];
                 if (error.response.data.errors.name) {
                     _this5.errors.push(error.response.data.errors.name[0]);
@@ -62549,6 +62555,12 @@ var render = function() {
                           )
                         ]),
                         _vm._v(" "),
+                        task.status == 1
+                          ? _c("span", { staticClass: "done-badge" }, [
+                              _vm._v("DONE")
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
                         _c("span", { staticClass: "right" }, [
                           _vm._v(
                             _vm._s(
@@ -62593,23 +62605,25 @@ var render = function() {
                           )
                         ]),
                         _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-success btn-xs",
-                            on: {
-                              click: function($event) {
-                                _vm.initUpdate(index)
-                              }
-                            }
-                          },
-                          [
-                            _c("span", {
-                              staticClass: "glyphicon glyphicon-edit"
-                            }),
-                            _vm._v(" Edit")
-                          ]
-                        ),
+                        task.status == 0
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-warning btn-xs",
+                                on: {
+                                  click: function($event) {
+                                    _vm.initUpdate(index)
+                                  }
+                                }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "glyphicon glyphicon-edit"
+                                }),
+                                _vm._v(" Edit")
+                              ]
+                            )
+                          : _vm._e(),
                         _vm._v(" "),
                         _c(
                           "button",
@@ -62629,19 +62643,26 @@ var render = function() {
                           ]
                         ),
                         _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-success",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                _vm.doneTask(index)
-                              }
-                            }
-                          },
-                          [_vm._v("Done")]
-                        )
+                        task.status == 0
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-success",
+                                attrs: { type: "button" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.doneTask(index)
+                                  }
+                                }
+                              },
+                              [
+                                _c("span", {
+                                  staticClass: "glyphicon glyphicon-ok"
+                                }),
+                                _vm._v(" Done")
+                              ]
+                            )
+                          : _vm._e()
                       ])
                     ]
                   )

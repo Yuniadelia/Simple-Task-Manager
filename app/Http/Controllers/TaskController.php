@@ -125,11 +125,12 @@ class TaskController extends Controller
         ],200);
     }
 
-    public function done(Request $request, Task $task)
+    public function done(Request $request,$id, Task $task)
     {
         $this->validate($request, [
             'status' => 'required'
         ]);
+        $task = Task::find($id);
         $task->status = request('status');
         $task->save();
 
