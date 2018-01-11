@@ -45,21 +45,22 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        /*$this->validate($request, [
+        $this->validate($request, [
             'name'        => 'required|max:255',
             'description' => 'required',
             'due_date'    => 'required'
         ]);
- 
-        $task = Task::create([
+        $data = [
             'name'        => request('name'),
             'description' => request('description'),
+            'due_date'    => request('due_date'),
             'user_id'     => Auth::user()->id,
-            'due_date'    => request('due_date')
-        ]);*/
- 
+            'status'    => 0
+        ];
+        $task = Task::create($data);
+        
         return response()->json([
-            'task'    => $request->due_date,
+            'task'    => $task,
             'message' => 'Success'
         ], 200);
     }
@@ -125,7 +126,7 @@ class TaskController extends Controller
         ],200);
     }
 
-    public function done(Request $request,$id, Task $task)
+    public function done(Request $request, $id, Task $task)
     {
         $this->validate($request, [
             'status' => 'required'

@@ -20136,7 +20136,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 window.Vue = __WEBPACK_IMPORTED_MODULE_1_vue___default.a;
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]);
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__webpack_require__(12));
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue_moment___default.a);
 
 var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
     el: '#app',
@@ -62384,13 +62384,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         createTask: function createTask() {
             var _this = this;
 
-            console.log(this.task);
             axios.post('/task', {
                 name: this.task.name,
                 description: this.task.description,
                 due_date: this.task.due_date
             }).then(function (response) {
-
                 _this.reset();
 
                 _this.tasks.push(response.data.task);
@@ -62464,10 +62462,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.put('/done/' + this.orderedTasks[index].id, {
                 status: 1
             }).then(function (response) {
-                console.log("Berhasil");
                 _this5.reset();
 
-                _this5.tasks.push(response.data.task);
+                _this5.readTasks();
             }).catch(function (error) {
                 _this5.errors = [];
                 if (error.response.data.errors.name) {

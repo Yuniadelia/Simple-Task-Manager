@@ -148,14 +148,12 @@
             },
             createTask()
             {
-                console.log(this.task);
                 axios.post('/task', {
                     name: this.task.name,
                     description: this.task.description,
                     due_date: this.task.due_date
                 })
                     .then(response => {
-
                         this.reset();
 
                         this.tasks.push(response.data.task);
@@ -239,10 +237,9 @@
                     status: 1
                 })
                     .then(response => {
-                        console.log("Berhasil");
                         this.reset();
 
-                        this.tasks.push(response.data.task);
+                        this.readTasks();
 
                     })
                     .catch(error => {
